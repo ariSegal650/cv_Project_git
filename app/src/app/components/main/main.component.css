@@ -133,7 +133,7 @@ mat-progress-bar {
 .output .aside .img{
     height: 145px;
     /* width: 165px; */
-    clip-path: circle(50% );
+    border-radius: 50%;
     margin-bottom: 35px;
     display: grid;
     justify-content: center;
