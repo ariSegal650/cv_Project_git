@@ -1,0 +1,155 @@
+* {
+    margin: 0;
+    padding: 0;
+    
+}
+
+.main {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.input {
+    display: grid;
+    justify-content: center;
+}
+
+.output {
+    border: solid 1px black;
+    margin: 20px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    /* padding: 20px; */
+    box-shadow: -2px -4px 11px 1px;
+
+}
+
+.name p {
+    font-size: 50px;
+    color: #002D62;
+}
+
+mat-progress-bar {
+    /* margin-top:min(5px) ; */
+    /* resize: both !important; */
+    width: 60%;
+
+}
+
+.output .aside {
+    background-color: #002244;
+    color: aliceblue;
+    padding: 20px;
+}
+
+.output .img {
+    height: 257px;
+    resize: vertical;
+    overflow: hidden;
+}
+
+.output .aside .contact {
+    /* margin-top: 257px; */
+}
+
+.line {
+    width: 90%;
+    background-color: white;
+    height: 2px;
+    margin: 2px 5px 0px 0px;
+    margin-bottom: 28px;
+    border: none;
+}
+
+.output .aside .contact .title {
+    margin: 12px 0px 6px 0px;
+}
+
+.skils {
+  
+   
+   
+}
+
+
+.ProgressBar {
+    margin-bottom: 15px;
+
+}
+
+.headline {
+    padding-top: 25px;
+
+}
+
+.right {
+    padding-left: 47px;
+}
+
+.output .right .header {
+    height: min(278px);
+
+}
+
+.right .header .name {
+    padding-top: 27px;
+}
+
+.right .header .abuot {
+    padding-top: 34px;
+    margin-right: 19px;
+}
+
+.experiense .line, .Education .line {
+    background-color: black;
+}
+
+.ExperienceLineSide {
+    border-left: solid 2px;
+}
+
+.ExperienceLineSide .date {
+    display: flex;
+    right: 24px;
+    position: relative;
+}
+
+.ExperienceLineSide .circle {
+    margin-right: 5px;
+    clip-path: circle(50%);
+    border: black solid 2px;
+    border-radius: 15px;
+    background: white;
+    width: 12px;
+    height: 12px;
+}
+
+.onee {
+    margin: 15px 15px 0px 15px;
+
+}
+
+.output .aside .img{
+    height: 145px;
+    /* width: 165px; */
+    clip-path: circle(50% );
+    margin-bottom: 35px;
+    display: grid;
+    justify-content: center;
+}
+.output .aside .img img{
+    width: 100%;
+    height: 100%;
+}
+
+
+
+/* @keyframes color-me-in {
+    0%{
+        background-color: aliceblue;
+    }
+    100%{
+background-color:antiquewhite ;
+    }
+} */
