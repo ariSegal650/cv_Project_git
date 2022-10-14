@@ -11,14 +11,14 @@ import { skill } from 'src/app/models/skill';
 export class MainComponent implements OnInit {
 
   
-  display="height: 0;display: none; clip-path: none;"
+  // display="height: 0;display: none; clip-path: none;"
    url=""
-  inputName = "full name";
-  inputAbut = "abut you"
+  inputName = "";
+  inputAbut = ""
 
-  linkdein = "linkdein";
-  email = '12345@gmail.com'
-  tel = '052-55336623'
+  linkdein = "";
+  email = ''
+  tel = ''
   arrSkils: skill[] = [
     { name: "skile", value: 70 }
   ];
@@ -28,6 +28,7 @@ export class MainComponent implements OnInit {
   MC: mainContect[] = [{ headline: "experiense", arr: [{ dateStart: "", dateEnd: "", compnyName: "", compnyAddres: "", position: "", content: "" }] }, { headline: "Education", arr: [{ dateStart: "", dateEnd: "", compnyName: "", compnyAddres: "", position: "", content: "" }] }]
   // arrExperience:Experience[]=[{dateStart:"",dateEnd:"",compnyName:"",compnyAddres:"",position:"",content:""}]
   // arrEducation:Experience[]=[{dateStart:"",dateEnd:"",compnyName:"",compnyAddres:"",position:"",content:""}]
+   reader:FileReader = new FileReader();
   constructor() {
 
   }
@@ -35,25 +36,28 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  newSkil(a: number) {
-    this.arrSkils.push(new skill("skile", 50))
+  newSkil() {
+    this.arrSkils.push(new skill("", 50))
   }
-  newLanguage(a: number) {
-    this.arrLanguage.push(new skill("english", 70));
+  newLanguage() {
+    this.arrLanguage.push(new skill("", 70));
   }
-  newExperience(a: number, b: number) {
+  newExperience(a: number) {
     this.MC[a].arr.push(new Experience())
+  }
+  newMainInput(){
+    this.MC.push(new mainContect("",[new Experience()]))
   }
 
   onFileUpload(img0) {
     
     if (img0.target.files[0] && img0.target.files){
-     var reader:FileReader = new FileReader();
+    
      let file =img0.target.files[0];
-      reader.readAsDataURL(file);
-      this.display="display:grid"
-      reader.onload = (event: any) => {
-  this.url=reader.result as string
+      this.reader.readAsDataURL(file);
+      // this.display="display:grid"
+      this.reader.onload = (event: any) => {
+  this.url=this.reader.result as string
       }
     }
      

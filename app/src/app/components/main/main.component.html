@@ -5,72 +5,105 @@
                 <mat-tab label="First">
                     <div class="header">
                         <div class="img1">
-                            <input type="file" multiple accept="image/*" style="height: 200px;" (change)="onFileUpload($event)"  #selectFile>
-                            <!-- <a (click)="selectFile.click()">
+                            <h1>upload profil img</h1>
+                            <input type="file" style="display: none;" multiple accept="image/*"
+                                (change)="onFileUpload($event)" #selectFile>
+                            <a (click)="selectFile.click()">
                                 <mat-icon>add_photo_alternate</mat-icon>
-                            </a> -->
-
+                            </a>
                         </div>
+
                         <div class="name">
+                            <h1>enter your name</h1>
                             <input type="text" [(ngModel)]="inputName" value="full name">
                         </div>
                         <div class="abuot">
-                            <p>123</p>
+                            <h1>enter about you</h1>
                             <input type="text" [(ngModel)]="inputAbut" value="abut">
                         </div>
                     </div>
+                    <div class="contact center">
+                        <h1>your phone</h1>
+                        <input type="tel" [(ngModel)]="tel">
+                        <h1>your email</h1>
+                        <input type="email" [(ngModel)]="email">
+                        <h1>your linkdein</h1>
+                        <input type="text" [(ngModel)]="linkdein">
+                    </div>
                 </mat-tab>
+
                 <mat-tab label="Second">
 
-                    <div class="aside">
-                        <div class="Language" *ngFor="let i of arrLanguage;let p=index">
+                    <div class="aside center">
 
+                        <div class="Language center">
+                            <h2>Language</h2>
+                            <div *ngFor="let i of arrLanguage;let p=index">
+                                <input type="text" [(ngModel)]="arrLanguage[p].name">
+                                <mat-slider aria-label="" [(ngModel)]="arrLanguage[p].value"></mat-slider>
+                            </div>
+                            <h4>new Language</h4>
                             <button mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon"
-                                (click)="newLanguage(p)">
+                                (click)="newLanguage()">
                                 +
                             </button>
-                            <input type="text" [(ngModel)]="arrLanguage[p].name">
-                            <mat-slider aria-label="" [(ngModel)]="arrLanguage[p].value"></mat-slider>
                         </div>
-                        <div class="skils" *ngFor="let i of arrSkils;let p=index">
-
+                        <div class="skils center">
+                            <h2>Skilss</h2>
+                            <div *ngFor="let i of arrSkils;let p=index">
+                                <input type="text" [(ngModel)]="arrSkils[p].name">
+                                <mat-slider aria-label="" [(ngModel)]="arrSkils[p].value"></mat-slider>
+                            </div>
+                            <h4>new skill</h4>
                             <button mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon"
-                                (click)="newSkil(p)">
+                                (click)="newSkil()">
                                 +
                             </button>
-                            <input type="text" [(ngModel)]="arrSkils[p].name">
-                            <mat-slider aria-label="" [(ngModel)]="arrSkils[p].value"></mat-slider>
                         </div>
-                        <div class="contact">
-                            <input type="tel" [(ngModel)]="tel">
-                            <input type="email" [(ngModel)]="email">
-                            <input type="text" [(ngModel)]="linkdein">
-                        </div>
+                      
                     </div>
                 </mat-tab>
                 <mat-tab label="Third">
-                    <div class="main2">
-                        <div class="experiense">
-                            <div *ngFor="let i of MC;let p=index">
-                                <div *ngFor="let z of MC[p].arr;let x=index">
+                   
+                        <div class="mainEducation">
+                            <!--  -->
+                            <div class="ArrEducation" *ngFor="let i of MC;let p=index">
+                               <h2> {{'{'+i.headline+'}'}}</h2>
+                               <input type="text" *ngIf="p!=0 && p!=1" [(ngModel)]="i.headline">
+                                <!-- file -->
+                                <div *ngFor="let z of MC[p].arr;let x=index" class="inputEducation">
+                                    <h3>< {{x+1}} ></h3>
+                                    <h4>date start work</h4>
                                     <input type="date" [(ngModel)]="z.dateStart">
+                                   
+                                    <h4>date end work</h4>
                                     <input type="text" [(ngModel)]="z.dateEnd">
+                                    <h4>compony/education name </h4>
                                     <input type="text" [(ngModel)]="z.compnyName">
+                                    <h4>compny/education Addres</h4>
                                     <input type="text" [(ngModel)]="z.compnyAddres">
+                                    <h4>position</h4>
                                     <input type="text" [(ngModel)]="z.position">
+                                    <h4>start work</h4>
                                     <input type="text" [(ngModel)]="z.content">
-                                    <button mat-mini-fab color="accent"
+                                    
+                                </div>
+                                <h5>new {{i.headline}}</h5>
+                                <button mat-mini-fab color="accent"
                                         aria-label="Example icon button with a plus one icon"
-                                        (click)="newExperience(p,x)">
+                                        (click)="newExperience(p)">
                                         +
                                     </button>
-
-                                </div>
                             </div>
+                            <button mat-mini-fab color="accent"
+                            aria-label="Example icon button with a plus one icon"
+                            (click)="newMainInput()">
+                            +
+                        </button>
                         </div>
 
 
-                    </div>
+                  
                 </mat-tab>
             </mat-tab-group>
 
@@ -80,17 +113,17 @@
     <div class="output">
 
         <div class="aside">
-            <div class="img" [style]="display">
-          <img [src]="url" alt="" >
+            <div class="img" *ngIf="reader.onload">
+                <img [src]="url" alt="">
             </div>
-            <div class="contact">
+            <div class="contact" *ngIf="tel ||email ||linkdein">
                 <h2>contact</h2>
                 <hr class="line">
-                <h4 class="title">Phone</h4>
+                <h4 *ngIf="tel" class="title">Phone</h4>
                 <p>{{tel}}</p>
-                <h4 class="title">Email</h4>
+                <h4 *ngIf="email" class="title">Email</h4>
                 <p>{{email}}</p>
-                <h4 class="title">Linkdein</h4>
+                <h4 *ngIf="linkdein" class="title">Linkdein</h4>
                 <p>{{linkdein}}</p>
             </div>
 
@@ -99,13 +132,13 @@
                 <hr class="line">
                 <div class="Language ProgressBar" *ngFor="let item of arrLanguage let p=index">
                     <p>{{arrLanguage[p].name}}</p>
-                    <mat-progress-bar mode="determinate" value="{{arrLanguage[p].value}}"></mat-progress-bar>
+                    <mat-progress-bar *ngIf="arrLanguage[p].name" mode="determinate" value="{{arrLanguage[p].value}}"></mat-progress-bar>
                 </div>
                 <h2 class="headline"> skills</h2>
                 <hr class="line">
                 <div class="skils ProgressBar" *ngFor="let item of arrSkils let p=index">
                     <p>{{arrSkils[p].name}}</p>
-                    <mat-progress-bar mode="determinate" value="{{arrSkils[p].value}}"></mat-progress-bar>
+                    <mat-progress-bar *ngIf="arrSkils[p].name" mode="determinate" value="{{arrSkils[p].value}}"></mat-progress-bar>
                 </div>
 
 
@@ -132,11 +165,9 @@
                             <div class="onee" *ngFor="let z of MC[p].arr;let x=index">
                                 <div class="date">
                                     <div class="circle"></div>
-                                    <h4> {{z.dateStart}} <span *ngIf="z.dateStart && z.dateEnd"> -
-                                        </span> {{z.dateEnd}}</h4>
+                                    <h4> {{z.dateStart}} <span *ngIf="z.dateStart && z.dateEnd"> -</span> {{z.dateEnd}}</h4>
                                 </div>
-                                <h5> {{z.compnyName}} <span *ngIf="z.compnyName && z.compnyAddres">|</span>
-                                    {{z.compnyAddres}}</h5>
+                                <h5> {{z.compnyName}} <span *ngIf="z.compnyName && z.compnyAddres">|</span> {{z.compnyAddres}}</h5>
                                 <p>{{z.content}}</p>
                             </div>
                         </div>

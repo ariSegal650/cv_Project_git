@@ -1,7 +1,6 @@
 * {
     margin: 0;
     padding: 0;
-    
 }
 
 .main {
@@ -9,12 +8,71 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
+.center{
+    display: grid;
+    justify-content: center;
+}
+.end{
+    justify-self: end;
+}
 
+/*------------- input ----- */
 .input {
     display: grid;
     justify-content: center;
 }
-
+.input .header h1,.input .contact h1{
+   
+    color: #007791;
+    margin-bottom: 3px;
+    margin-top: 27px;
+}
+/* tab 1 */
+.input .header{
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+}
+.input .header div{
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+}
+/* tab 2 */
+.input .aside h4{
+    justify-self: end;
+    color: #007791;
+}
+.input .aside button{
+    justify-self: end;
+    margin-bottom:20px ;
+}
+/* tab 3 */
+.input  .inputEducation{
+    display: grid;
+    justify-content: center;
+    margin-top: 15px;
+}
+.input .mainEducation h2{
+   margin-top: 22px;
+   color: #002D62;
+}
+.input .mainEducation h4{
+    margin-top: 10px;
+    color: #1b6f82;
+ }
+ .input .mainEducation h5{
+   justify-self: end;
+    color: #1b6f82;
+ }
+ .input .mainEducation button{
+    justify-self: end;
+    
+  }
+  .input .mainEducation .ArrEducation{
+  display: grid;    
+  }
+/*---------- output ------- */
 .output {
     border: solid 1px black;
     margin: 20px;
@@ -24,33 +82,22 @@
     box-shadow: -2px -4px 11px 1px;
 
 }
-
-.name p {
+.output .name p {
     font-size: 50px;
     color: #002D62;
 }
-
 mat-progress-bar {
-    /* margin-top:min(5px) ; */
-    /* resize: both !important; */
     width: 60%;
-
 }
-
 .output .aside {
     background-color: #002244;
     color: aliceblue;
     padding: 20px;
 }
-
 .output .img {
     height: 257px;
     resize: vertical;
     overflow: hidden;
-}
-
-.output .aside .contact {
-    /* margin-top: 257px; */
 }
 
 .line {
@@ -65,13 +112,6 @@ mat-progress-bar {
 .output .aside .contact .title {
     margin: 12px 0px 6px 0px;
 }
-
-.skils {
-  
-   
-   
-}
-
 
 .ProgressBar {
     margin-bottom: 15px;
@@ -131,7 +171,7 @@ mat-progress-bar {
 }
 
 .output .aside .img{
-    height: 145px;
+    height: 240px;
     /* width: 165px; */
     border-radius: 50%;
     margin-bottom: 35px;
@@ -145,11 +185,19 @@ mat-progress-bar {
 
 
 
-/* @keyframes color-me-in {
-    0%{
-        background-color: aliceblue;
+@media(max-width:700px){
+
+    .main{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
     }
-    100%{
-background-color:antiquewhite ;
+    /*--------------- input ------------------ */
+    
+}
+@media(min-width:1200px){
+    .input .header p {
+        font-size: 50px;
+       
     }
-} */
+}
