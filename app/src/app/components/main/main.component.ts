@@ -3,6 +3,7 @@ import { Experience } from 'src/app/models/Experience';
 import { mainContect } from 'src/app/models/mainContect';
 import { skill } from 'src/app/models/skill';
 
+
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
