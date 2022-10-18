@@ -1,0 +1,19 @@
+.main{
+    padding: 10px 0 1px 0;
+    background-color: #5F9EA0;
+
+}
+.logo .left{
+    bottom: 15px;
+    position: relative;
+    left: 2px;
+    color: #a8dab5;
+
+}
+.logo .right{
+    top: 16px;
+    position: relative;
+    right: 7px;
+    color: #a8dab5;
+
+}

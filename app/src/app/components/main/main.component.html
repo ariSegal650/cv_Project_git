@@ -5,29 +5,29 @@
                 <mat-tab label="First">
                     <div class="header">
                         <div class="img1">
-                            <h1>upload profil img</h1>
+                            <h3>upload profil img</h3>
                             <input type="file" style="display: none;" multiple accept="image/*"
                                 (change)="onFileUpload($event)" #selectFile>
                             <a (click)="selectFile.click()">
                                 <mat-icon>add_photo_alternate</mat-icon>
                             </a>
                         </div>
-
+                        
                         <div class="name">
-                            <h1>enter your name</h1>
+                            <h3>enter your name</h3>
                             <input type="text" [(ngModel)]="inputName" value="full name">
                         </div>
                         <div class="abuot">
-                            <h1>enter about you</h1>
-                            <input type="text" [(ngModel)]="inputAbut" value="abut">
+                            <h3>enter about you</h3>
+                        <textarea name="" id="" cols="30" rows="5" [(ngModel)]="inputAbut"></textarea>
                         </div>
                     </div>
                     <div class="contact center">
-                        <h1>your phone</h1>
+                        <h3>your phone</h3>
                         <input type="tel" [(ngModel)]="tel">
-                        <h1>your email</h1>
+                        <h3>your email</h3>
                         <input type="email" [(ngModel)]="email">
-                        <h1>your linkdein</h1>
+                        <h3>your linkdein</h3>
                         <input type="text" [(ngModel)]="linkdein">
                     </div>
                 </mat-tab>
@@ -68,16 +68,21 @@
                         <div class="mainEducation">
                             <!--  -->
                             <div class="ArrEducation" *ngFor="let i of MC;let p=index">
-                               <h2> {{'{'+i.headline+'}'}}</h2>
-                               <input type="text" *ngIf="p!=0 && p!=1" [(ngModel)]="i.headline">
+                                <!-- 4vw 1.5vw -->
+                               <h2 class="headline"> {{'{'+i.headline+'}'}}</h2>  
+                                <div class="new_input"*ngIf="p!=0 && p!=1">
+                                    <p>enter a headline</p>
+                                    <input type="text"  [(ngModel)]="i.headline">
+                                </div>
+                               
                                 <!-- file -->
                                 <div *ngFor="let z of MC[p].arr;let x=index" class="inputEducation">
-                                    <h3>< {{x+1}} ></h3>
+                                    <h3 class="number">< {{x+1}} ></h3>
                                     <h4>date start work</h4>
-                                    <input type="date" [(ngModel)]="z.dateStart">
+                                    <input type="month" [(ngModel)]="z.dateStart">
                                    
                                     <h4>date end work</h4>
-                                    <input type="text" [(ngModel)]="z.dateEnd">
+                                    <input type="month" [(ngModel)]="z.dateEnd">
                                     <h4>compony/education name </h4>
                                     <input type="text" [(ngModel)]="z.compnyName">
                                     <h4>compny/education Addres</h4>
@@ -90,13 +95,12 @@
                                 </div>
                                 <h5>new {{i.headline}}</h5>
                                 <button mat-mini-fab color="accent"
-                                        aria-label="Example icon button with a plus one icon"
+                                     
                                         (click)="newExperience(p)">
                                         +
                                     </button>
                             </div>
                             <button mat-mini-fab color="accent"
-                            aria-label="Example icon button with a plus one icon"
                             (click)="newMainInput()">
                             +
                         </button>

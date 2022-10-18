@@ -1,6 +1,9 @@
-* {
+*{
     margin: 0;
     padding: 0;
+}
+h1,h2,h3,h4,h5  {
+    margin: 0;
 }
 
 .main {
@@ -20,8 +23,10 @@
 .input {
     display: grid;
     justify-content: center;
+    background: #fbceb124;
+    width: 100%;
 }
-.input .header h1,.input .contact h1{
+.input .header h3,.input .contact h3{
    
     color: #007791;
     margin-bottom: 3px;
@@ -42,6 +47,7 @@
 .input .aside h4{
     justify-self: end;
     color: #007791;
+    margin: 0;
 }
 .input .aside button{
     justify-self: end;
@@ -53,9 +59,11 @@
     justify-content: center;
     margin-top: 15px;
 }
-.input .mainEducation h2{
+.input .mainEducation .headline{
    margin-top: 22px;
    color: #002D62;
+   right: 4vw;
+   position: relative;
 }
 .input .mainEducation h4{
     margin-top: 10px;
@@ -64,6 +72,8 @@
  .input .mainEducation h5{
    justify-self: end;
     color: #1b6f82;
+    margin-top: 15px;
+    margin-bottom: 0;
  }
  .input .mainEducation button{
     justify-self: end;
@@ -71,7 +81,13 @@
   }
   .input .mainEducation .ArrEducation{
   display: grid;    
+  justify-content: center;
   }
+  .input .mainEducation .ArrEducation .number{
+    right: 1.5vw;
+    position: relative;
+    }
+  
 /*---------- output ------- */
 .output {
     border: solid 1px black;
@@ -80,6 +96,8 @@
     grid-template-columns: 1fr 2fr;
     /* padding: 20px; */
     box-shadow: -2px -4px 11px 1px;
+   
+    width: 210mm;
 
 }
 .output .name p {
@@ -118,7 +136,7 @@ mat-progress-bar {
 
 }
 
-.headline {
+.output .headline {
     padding-top: 25px;
 
 }
@@ -133,7 +151,7 @@ mat-progress-bar {
 }
 
 .right .header .name {
-    padding-top: 27px;
+    padding-top: 37px;
 }
 
 .right .header .abuot {
@@ -193,7 +211,11 @@ mat-progress-bar {
         justify-content: center;
     }
     /*--------------- input ------------------ */
-    
+
+    /* output */
+    .output{
+        zoom: 50%;
+    }
 }
 @media(min-width:1200px){
     .input .header p {
