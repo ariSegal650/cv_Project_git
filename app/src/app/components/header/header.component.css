@@ -3,6 +3,13 @@
     background-color: #5F9EA0;
 
 }
+.logo{
+    max-width: max-content;
+}
+.logo a{
+    text-decoration: none;
+   
+}
 .logo .left{
     bottom: 15px;
     position: relative;

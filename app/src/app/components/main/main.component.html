@@ -1,9 +1,9 @@
 <div class="main">
     <div class="input">
         <div>
-            <mat-tab-group>
+            <mat-tab-group mat-align-tabs="center" >
                 <mat-tab label="First">
-                    <div class="header">
+                    <div class="header Basic_details">
                         <div class="img1">
                             <h3>upload profil img</h3>
                             <input type="file" style="display: none;" multiple accept="image/*"
@@ -12,27 +12,32 @@
                                 <mat-icon>add_photo_alternate</mat-icon>
                             </a>
                         </div>
-                        
-                        <div class="name">
-                            <h3>enter your name</h3>
-                            <input type="text" [(ngModel)]="inputName" value="full name">
-                        </div>
-                        <div class="abuot">
-                            <h3>enter about you</h3>
+
+                        <!-- <div class="name"> -->
+                        <h3>enter your name</h3>
+                        <input type="text" [(ngModel)]="inputName" value="full name">
+                        <!-- </div> -->
+                        <!-- <div class="abuot"> -->
+                        <h3>enter about you</h3>
                         <textarea name="" id="" cols="30" rows="5" [(ngModel)]="inputAbut"></textarea>
+                        <!-- </div> -->
+
+                        <div class="contact ">
+                            <h3>your phone</h3>
+                            <input type="tel" [(ngModel)]="tel">
+                            <h3>your email</h3>
+                            <input type="email" [(ngModel)]="email">
+                            <h3>your linkdein</h3>
+                            <input type="text" [(ngModel)]="linkdein">
                         </div>
+                       
+
                     </div>
-                    <div class="contact center">
-                        <h3>your phone</h3>
-                        <input type="tel" [(ngModel)]="tel">
-                        <h3>your email</h3>
-                        <input type="email" [(ngModel)]="email">
-                        <h3>your linkdein</h3>
-                        <input type="text" [(ngModel)]="linkdein">
-                    </div>
+                    <button (click)="changeTab(1)" mat-stroked-button color="warn">next</button>
+
                 </mat-tab>
 
-                <mat-tab label="Second">
+                <mat-tab label="Second" >
 
                     <div class="aside center">
 
@@ -60,61 +65,60 @@
                                 +
                             </button>
                         </div>
-                      
+
                     </div>
+                    <button (click)="changeTab(2)" mat-stroked-button color="warn">next</button>
                 </mat-tab>
                 <mat-tab label="Third">
-                   
-                        <div class="mainEducation">
-                            <!--  -->
-                            <div class="ArrEducation" *ngFor="let i of MC;let p=index">
-                                <!-- 4vw 1.5vw -->
-                               <h2 class="headline"> {{'{'+i.headline+'}'}}</h2>  
-                                <div class="new_input"*ngIf="p!=0 && p!=1">
-                                    <p>enter a headline</p>
-                                    <input type="text"  [(ngModel)]="i.headline">
-                                </div>
-                               
-                                <!-- file -->
-                                <div *ngFor="let z of MC[p].arr;let x=index" class="inputEducation">
-                                    <h3 class="number">< {{x+1}} ></h3>
-                                    <h4>date start work</h4>
-                                    <input type="month" [(ngModel)]="z.dateStart">
-                                   
-                                    <h4>date end work</h4>
-                                    <input type="month" [(ngModel)]="z.dateEnd">
-                                    <h4>compony/education name </h4>
-                                    <input type="text" [(ngModel)]="z.compnyName">
-                                    <h4>compny/education Addres</h4>
-                                    <input type="text" [(ngModel)]="z.compnyAddres">
-                                    <h4>position</h4>
-                                    <input type="text" [(ngModel)]="z.position">
-                                    <h4>start work</h4>
-                                    <input type="text" [(ngModel)]="z.content">
-                                    
-                                </div>
-                                <h5>new {{i.headline}}</h5>
-                                <button mat-mini-fab color="accent"
-                                     
-                                        (click)="newExperience(p)">
-                                        +
-                                    </button>
+
+                    <div class="mainEducation">
+                        <!--  -->
+                        <div class="ArrEducation" *ngFor="let i of MC;let p=index">
+                            <!-- 4vw 1.5vw -->
+                            <h2 class="headline"> {{'{'+i.headline+'}'}}</h2>
+                            <div class="new_input" *ngIf="p!=0 && p!=1">
+                                <p>enter a headline</p>
+                                <input type="text" [(ngModel)]="i.headline">
                             </div>
-                            <button mat-mini-fab color="accent"
-                            (click)="newMainInput()">
+
+                            <!-- file -->
+                            <div *ngFor="let z of MC[p].arr;let x=index" class="inputEducation">
+                                <h3 class="number">
+                                    < {{x+1}}>
+                                </h3>
+                                <h4>date start work</h4>
+                                <input type="month" [(ngModel)]="z.dateStart">
+
+                                <h4>date end work</h4>
+                                <input type="month" [(ngModel)]="z.dateEnd">
+                                <h4>compony/education name </h4>
+                                <input type="text" [(ngModel)]="z.compnyName">
+                                <h4>compny/education Addres</h4>
+                                <input type="text" [(ngModel)]="z.compnyAddres">
+                                <h4>position</h4>
+                                <input type="text" [(ngModel)]="z.position">
+                                <h4>content</h4>
+                                <textarea name="" id="" cols="30" rows="5" [(ngModel)]="z.content"></textarea>
+                            </div>
+                            <h5>new {{i.headline}}</h5>
+                            <button mat-mini-fab color="accent" (click)="newExperience(p)">
+                                +
+                            </button>
+                        </div>
+                        <button mat-mini-fab color="accent" (click)="newMainInput()">
                             +
                         </button>
-                        </div>
+                    </div>
 
 
-                  
+
                 </mat-tab>
             </mat-tab-group>
 
 
         </div>
     </div>
-    <div class="output">
+    <div class="output"id="output">
 
         <div class="aside">
             <div class="img" *ngIf="reader.onload">
@@ -124,7 +128,7 @@
                 <h2>contact</h2>
                 <hr class="line">
                 <h4 *ngIf="tel" class="title">Phone</h4>
-                <p>{{tel}}</p>
+               <a href=""><p>{{tel}}</p></a> 
                 <h4 *ngIf="email" class="title">Email</h4>
                 <p>{{email}}</p>
                 <h4 *ngIf="linkdein" class="title">Linkdein</h4>
@@ -136,13 +140,15 @@
                 <hr class="line">
                 <div class="Language ProgressBar" *ngFor="let item of arrLanguage let p=index">
                     <p>{{arrLanguage[p].name}}</p>
-                    <mat-progress-bar *ngIf="arrLanguage[p].name" mode="determinate" value="{{arrLanguage[p].value}}"></mat-progress-bar>
+                    <mat-progress-bar *ngIf="arrLanguage[p].name" mode="determinate" value="{{arrLanguage[p].value}}">
+                    </mat-progress-bar>
                 </div>
                 <h2 class="headline"> skills</h2>
                 <hr class="line">
                 <div class="skils ProgressBar" *ngFor="let item of arrSkils let p=index">
                     <p>{{arrSkils[p].name}}</p>
-                    <mat-progress-bar *ngIf="arrSkils[p].name" mode="determinate" value="{{arrSkils[p].value}}"></mat-progress-bar>
+                    <mat-progress-bar *ngIf="arrSkils[p].name" mode="determinate" value="{{arrSkils[p].value}}">
+                    </mat-progress-bar>
                 </div>
 
 
@@ -169,9 +175,11 @@
                             <div class="onee" *ngFor="let z of MC[p].arr;let x=index">
                                 <div class="date">
                                     <div class="circle"></div>
-                                    <h4> {{z.dateStart}} <span *ngIf="z.dateStart && z.dateEnd"> -</span> {{z.dateEnd}}</h4>
+                                    <h4> {{z.dateStart}} <span *ngIf="z.dateStart && z.dateEnd"> -</span> {{z.dateEnd}}
+                                    </h4>
                                 </div>
-                                <h5> {{z.compnyName}} <span *ngIf="z.compnyName && z.compnyAddres">|</span> {{z.compnyAddres}}</h5>
+                                <h5> {{z.compnyName}} <span *ngIf="z.compnyName && z.compnyAddres">|</span>
+                                    {{z.compnyAddres}}</h5>
                                 <p>{{z.content}}</p>
                             </div>
                         </div>
@@ -183,4 +191,5 @@
 
 
     </div>
+    <button (click)="create_Pdf()">122</button>
 </div>
