@@ -1,0 +1,16 @@
+main{
+    display: grid;
+}
+app-alert-finish{
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    justify-content: center;
+    display: grid;
+    align-content: center;
+    height: 60%;
+}
+app-main{
+    overflow: auto;
+
+}

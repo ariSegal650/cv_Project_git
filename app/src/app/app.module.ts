@@ -15,13 +15,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { MainComponent } from './components/main/main.component';
 import { HeaderComponent } from './components/header/header.component';
+import { AlertFinishComponent } from './components/alert-finish/alert-finish.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
-    HeaderComponent
+    HeaderComponent,
+    AlertFinishComponent
   ],
   imports: [
     BrowserModule,

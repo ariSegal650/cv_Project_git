@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { MatTabGroup } from '@angular/material/tabs';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
@@ -12,9 +12,11 @@ import { skill } from 'src/app/models/skill';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
-export class MainComponent implements OnInit {
+export class MainComponent implements OnInit  {
+  
+  @Output() updateAlert = new EventEmitter<boolean>();
+@ViewChild(MatTabGroup) mattabgroup:MatTabGroup;
 
-@ViewChild(MatTabGroup) mattabgroup:MatTabGroup
   // display="height: 0;display: none; clip-path: none;"
   url = ""
   inputName = "";
@@ -69,6 +71,10 @@ export class MainComponent implements OnInit {
   changeTab(a:number)
   {
     this.mattabgroup.selectedIndex =a;
+  }
+  EndDesign(){
+    console.log(1)
+    this.updateAlert.emit(true)
   }
   // npm i jspdf, npm i html2canvas npm i @types/jspdf --save-dev
   async  create_Pdf() {

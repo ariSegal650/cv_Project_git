@@ -2,5 +2,8 @@
     <app-header></app-header>
   </header>
   <main>
-    <app-main></app-main>
+    <app-main (updateAlert)="open($event)"></app-main>
+  
+    <app-alert-finish *ngIf="openalert" (updateAlert)="open($event)"></app-alert-finish>
+  
   </main>
